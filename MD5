@@ -1,0 +1,15 @@
+e3eb1778fd5f9a3a92f4ae96a583e11f *DESCRIPTION
+86dc3ecb00963b78397c33938550d7ee *NAMESPACE
+566853fa7af09cf2c210de235d8843dc *R/get.fm.R
+31d5eb9ecd248389d03fc7f67cd42a88 *R/get.scenario.R
+7952c8b222cd999f6903a9d03c221510 *R/pool.med.R
+4a95ad26a803b0138dd784d35f5df162 *R/print.qe.fit.R
+cd7b23c1df1f4a49f146fbf6d203366f *R/qe.R
+cc9e24b2001de20c18e4b70d9abf6794 *R/qe.fit.R
+f7b20a53cbc9c771be6aa719e362826b *R/qe.group.level.R
+ba5ea2e6f356b6468b23480a43c2336a *R/qe.study.level.R
+94db64292e7d984302508f756bc590d3 *man/pool.med.Rd
+f99fc50ae346cc09d8fba5f15d9ad2e6 *man/print.qe.fit.Rd
+08af8bbd38684bdcdfdc41b06b8f4e99 *man/qe.Rd
+8d4ad9787f70330f0d0c867efba0e784 *man/qe.fit.Rd
+9926f7b18f3bec2fe37fdaf809c8a14d *man/qe.study.level.Rd

@@ -15,9 +15,12 @@
 No value is returned.
 }
 \description{
+\emph{Note}: As of release 0.1.2, this function is deprecated; \code{\link[estmeansd]{print.qe.fit}} (in the \sQuote{estmeansd} package) should be used instead.
+
 Print method for objects of class "qe.fit".
 }
 \examples{
+\donttest{
 ## Generate S2 summary data
 set.seed(1)
 n <- 100
@@ -28,8 +31,9 @@ quants <- stats::quantile(x, probs = c(0.25, 0.5, 0.75))
 res <- qe.fit(q1.val = quants[1], med.val = quants[2], q3.val = quants[3],
        n = n)
 print(res)
+}
 
 }
 \seealso{
-\code{\link{qe.fit}}
+\code{\link{metamedian-deprecated}}, \code{\link{qe.fit}}
 }

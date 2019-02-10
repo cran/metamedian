@@ -1,12 +1,17 @@
 #' Print method for objects of class "qe.fit"
 #'
+#' @description
+#'
+#' \emph{Note}: As of release 0.1.2, this function is deprecated; \code{\link[estmeansd]{print.qe.fit}} (in the \sQuote{estmeansd} package) should be used instead.
+#'
 #' Print method for objects of class "qe.fit".
 #'
 #' @param x object of class "qe.fit".
 #' @param ... other arguments.
 #' @return No value is returned.
-#' @seealso \code{\link{qe.fit}}
+#' @seealso \code{\link{metamedian-deprecated}}, \code{\link{qe.fit}}
 #' @examples
+#' \donttest{
 #' ## Generate S2 summary data
 #' set.seed(1)
 #' n <- 100
@@ -17,6 +22,7 @@
 #' res <- qe.fit(q1.val = quants[1], med.val = quants[2], q3.val = quants[3],
 #'        n = n)
 #' print(res)
+#' }
 #'
 #' @export
 

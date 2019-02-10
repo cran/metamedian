@@ -50,6 +50,8 @@ A object of class \code{qe.fit}. The object is a list with the following compone
 The results are printed with the \code{\link{print.qe.fit}} function.
 }
 \description{
+\emph{Note}: As of release 0.1.2, this function is deprecated; \code{\link[estmeansd]{qe.fit}} (in the \sQuote{estmeansd} package) should be used instead.
+
 This function fits several parametric families of distributions from summary data in the following forms: \itemize{
 \item S1: median, minimum and maximum values, and sample size
 \item S2: median, first and third quartiles, and sample size
@@ -60,6 +62,7 @@ This function fits several parametric families of distributions from summary dat
 Distributions are fit by minimizing the distance between observed and distribution quantiles in the L2-norm. If data are positive, the normal, log-normal, gamma, and Weibull distributions are fit. Otherwise, only the normal distribution is fit. The limited-memory Broyden-Fletcher-Goldfarb-Shanno (L-BFGS-M) algorithm implemented in the \code{\link[stats]{optim}} function is used for minimization. Default box constraints are described in McGrath et al. (2018).
 }
 \examples{
+\donttest{
 ## Generate S2 summary data
 set.seed(1)
 n <- 100
@@ -68,8 +71,12 @@ quants <- stats::quantile(x, probs = c(0.25, 0.5, 0.75))
 
 ## Fit distributions
 qe.fit(q1.val = quants[1], med.val = quants[2], q3.val = quants[3], n = n)
+}
 
 }
 \references{
 McGrath S., Sohn H., Steele R., and Benedetti A. (2018). Two-sample aggregate data meta-analysis of medians. \emph{ArXiv e-prints}. \url{https://arxiv.org/abs/1809.01278}.
+}
+\seealso{
+\code{\link{metamedian-deprecated}}
 }

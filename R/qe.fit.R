@@ -1,10 +1,16 @@
 #' Quantile estimation fitting
 #'
+#' @description
+#'
+#' \emph{Note}: As of release 0.1.2, this function is deprecated; \code{\link[estmeansd]{qe.fit}} (in the \sQuote{estmeansd} package) should be used instead.
+#'
 #' This function fits several parametric families of distributions from summary data in the following forms: \itemize{
 #' \item S1: median, minimum and maximum values, and sample size
 #' \item S2: median, first and third quartiles, and sample size
 #' \item S3: median, minimum and maximum values, first and third quartiles, and sample size
 #'  }
+#'
+#' @details
 #'
 #' Distributions are fit by minimizing the distance between observed and distribution quantiles in the L2-norm. If data are positive, the normal, log-normal, gamma, and Weibull distributions are fit. Otherwise, only the normal distribution is fit. The limited-memory Broyden-Fletcher-Goldfarb-Shanno (L-BFGS-M) algorithm implemented in the \code{\link[stats]{optim}} function is used for minimization. Default box constraints are described in McGrath et al. (2018).
 #'
@@ -44,7 +50,9 @@
 
 #' @references McGrath S., Sohn H., Steele R., and Benedetti A. (2018). Two-sample aggregate data meta-analysis of medians. \emph{ArXiv e-prints}. \url{https://arxiv.org/abs/1809.01278}.
 #'
+#' @seealso \code{\link{metamedian-deprecated}}
 #' @examples
+#' \donttest{
 #' ## Generate S2 summary data
 #' set.seed(1)
 #' n <- 100
@@ -53,11 +61,14 @@
 #'
 #' ## Fit distributions
 #' qe.fit(q1.val = quants[1], med.val = quants[2], q3.val = quants[3], n = n)
+#' }
 #'
 #' @export
 
 qe.fit <- function(min.val, q1.val, med.val, q3.val, max.val, n,
                    qe.fit.control = list()) {
+
+  .Deprecated(msg = "'qe.fit' is deprecated.\nUse 'qe.fit' in the 'estmeansd' package instead.")
 
   scenario <- get.scenario(min.val, q1.val, med.val, q3.val, max.val)
   if (missing(n) & (scenario %in% c("S1", "S3"))) {

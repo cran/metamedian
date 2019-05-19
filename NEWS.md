@@ -1,6 +1,16 @@
 Package Updates
 ---------------
 
+### Changes in Version 0.1.4 (TBD)
+
+-   Fixed an error in the `qe()` function when calculating the sampling
+    variance for studies reporting means. Consequently, removed the need
+    for the internal `qe.group.level()` function
+-   Fixed an error in the `qe()` function when data provided are of
+    class “integer”
+-   Made `qe.fit()` and `print.qe.fit()` defunct. These functions were
+    moved to the ‘estmeansd’ package.
+
 ### Changes in Version 0.1.3 (2019-03-08)
 
 -   Begun using Git as a version-control system and hosting repository

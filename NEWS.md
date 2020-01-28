@@ -1,7 +1,13 @@
 Package Updates
 ---------------
 
-### Changes in Version 0.1.4 (TBD)
+### Changes in Version 0.1.5 (2020-01-27)
+
+-   Revised the `pool.med()` function to allow users to specify the
+    desired coverage probability
+-   Updated references
+
+### Changes in Version 0.1.4 (2019-05-19)
 
 -   Fixed an error in the `qe()` function when calculating the sampling
     variance for studies reporting means. Consequently, removed the need

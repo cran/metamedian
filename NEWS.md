@@ -1,5 +1,23 @@
 ## Package Updates
 
+### Changes in Version 1.0.0 (2023-02-27)
+
+-   Added the `metamean()` function, which can apply several methods to
+    estimate study-specific means and their standard errors in order to
+    estimate the pooled (difference of) means
+-   Added the `cd()` function, which applies the Confidence Distribution
+    method of Ozturk and Balakrishnan (2020) to estimate the pooled
+    median
+-   Added the `metamedian()` function, which is a wrapper for the
+    `qe()`, `cd()`, and `pool.med()` functions.
+-   Added the `describe_studies()` function for performing descriptive
+    analyses
+-   Added the `dat.age_raw`, `dat.age`, `dat.asat_raw`, `dat.asat`,
+    `dat.ck_raw`, and `dat.ck` data sets and corresponding example
+    applications in the documentation
+-   Added unit tests for the `metamean()`, `metamedian()`, and
+    `describe_studies()` functions
+
 ### Changes in Version 0.1.6 (2022-06-18)
 
 -   Fixed an error in Example 2 in the documentation for the `qe()`

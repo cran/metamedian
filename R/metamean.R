@@ -21,28 +21,27 @@
 #' For two group studies, this data frame can also contain the following columns for the summary data of the second group: \code{min.g2}, \code{q1.g2}, \code{med.g2}, \code{q3.g2}, \code{max.g2}, \code{n.g2}, \code{mean.g2}, and \code{sd.g2}.
 #' @param mean_method character string specifying the approach used to estimate the study-specific means. The options are the following:
 #' \tabular{ll}{
-#' \code{'wan'} \tab Method recommended by Wan et al. (2014), i.e., the method of Hozo et al. (2005) in scenario S1, method of Wan et al. (2014) in scenario S2, and method of Bland (2015) in scenario S3. \cr
+#' \code{'hozo/wan/bland'} \tab Method recommended by Wan et al. (2014), i.e., the method of Hozo et al. (2005) in scenario S1, method of Wan et al. (2014) in scenario S2, and method of Bland (2015) in scenario S3. \cr
 #' \code{'luo'} \tab Method of Luo et al. (2018). \cr
-#' \code{'shi_normal'} \tab Method recommended by Shi et al. (2020a), i.e., the method of Luo et al. (2018) in scenarios S1 and S2 and the method of Shi et al. (2020a) in scenario S3. \cr
 #' \code{'shi_lognormal'} \tab Method of Shi et al. (2020b). \cr
 #' \code{'qe'} \tab Quantile Matching Estimation method (McGrath et al. 20220). \cr
 #' \code{'bc'} \tab Box-Cox method (McGrath et al. 2020). \cr
-#' \code{'mln'} \tab Method for Unknown Non-Normal Distributions (Cai et al. 2021). This is the default option. \cr
+#' \code{'mln'} \tab Method for Unknown Non-Normal Distributions (Cai et al. 2021). \cr
 #' \code{'yang'} \tab Method of Yang et al. (2022) under the assumption of normality. \cr}
 #' @param se_method character string specifying the approach used to estimate the standard errors of the study-specific means estimators in scenarios S1, S2, and S3. The options are the following:
 #' \tabular{ll}{
-#' \code{'naive'} \tab Uses the estimated standard deviation divided by the square root of the sample size as the estimate of the standard error of the mean estimator. The approach used to estimate the standard deviation is specified by the \code{method_sd} argument. \cr
-#' \code{'bootstrap'} \tab Parametric bootstrap approach described by McGrath et al. (2023). \cr
-#' \code{'plugin'} \tab Uses the analytically derived standard error of the mean estimator, and plugs in the estimated standard deviation in place of the distributional standard deviation. This option is only available when \code{method_mean} is set to \code{'yang'}. \cr}
-#' @param sd_method character string specifying the approach used to estimate the study-specific standard deviations when applying the naive standard error estimator. The options are the following:
+#' \code{'naive'} \tab Uses the estimated standard deviation divided by the square root of the sample size as the estimate of the standard error of the mean estimator. This is the default option when \code{mean_method} is set to \code{'wan'}, \code{'luo'}, or \code{'shi_lognormal'}. The approach used to estimate the standard deviation is specified by the \code{sd_method} argument. \cr
+#' \code{'bootstrap'} \tab Parametric bootstrap approach described by McGrath et al. (2023). This option is only available (and is the default option) when \code{mean_method} is set to \code{'qe'}, \code{'bc'}, or \code{'mln'}. \cr
+#' \code{'plugin'} \tab Uses the analytically derived standard error of the mean estimator, and plugs in the estimated standard deviation in place of the distributional standard deviation. This option is only available (and is the default option) when \code{mean_method} is set to \code{'yang'}. \cr}
+#' @param sd_method character string specifying the approach used to estimate the study-specific standard deviations when applying the naive standard error estimator (if applicable). The options are the following:
 #' \tabular{ll}{
-#' \code{'wan'} \tab Method of Wan et al. (2014). \cr
-#' \code{'shi_normal'} \tab Method recommended by Shi et al. (2020a), i.e., the method of Wan et al. (2014) in scenarios S1 and S2 and the method of Shi et al. (2020a) in scenario S3. \cr
-#' \code{'shi_lognormal'} \tab Method of Shi et al. (2020b). \cr
-#' \code{'qe'} \tab Quantile Matching Estimation method (McGrath et al. 20220). \cr
-#' \code{'bc'} \tab Box-Cox method (McGrath et al. 2020). \cr
-#' \code{'mln'} \tab Method for Unknown Non-Normal Distributions (Cai et al. 2021). This is the default option. \cr
-#' \code{'yang'} \tab Method of Yang et al. (2022) under the assumption of normality. \cr}
+#' \code{'wan'} \tab Method of Wan et al. (2014). This is the default option when \code{mean_method} is set to \code{'hozo/wan/bland/hozo'}.\cr
+#' \code{'wan/shi_normal'} \tab Method recommended by Shi et al. (2020a), i.e., the method of Wan et al. (2014) in scenarios S1 and S2 and the method of Shi et al. (2020a) in scenario S3. This is the default option when \code{mean_method} is set to \code{'luo'}. \cr
+#' \code{'shi_lognormal'} \tab Method of Shi et al. (2020b). This is the default option when \code{mean_method} is set to \code{'shi_lognormal'}. \cr
+#' \code{'qe'} \tab Quantile Matching Estimation method (McGrath et al. 20220). This is the default option when \code{mean_method} is set to \code{'qe'}. \cr
+#' \code{'bc'} \tab Box-Cox method (McGrath et al. 2020). This is the default option when \code{mean_method} is set to \code{'bc'}. \cr
+#' \code{'mln'} \tab Method for Unknown Non-Normal Distributions (Cai et al. 2021). This is the default option when \code{mean_method} is set to \code{'mln'}. \cr
+#' \code{'yang'} \tab Method of Yang et al. (2022) under the assumption of normality. This is the default option when \code{mean_method} is set to \code{'yang'}. \cr}
 #' @param nboot integer specifying the number of bootstrap samples to use when using parametric bootstrap to estimate the study-specific standard errors in scenarios S1, S2, and S3. The default is \code{1000}.
 #' @param pool_studies logical scalar specifying whether to meta-analyze the studies. If this argument is set to \code{FALSE}, function will not meta-analyze the studies and will return a list with components \code{yi} containing the study-specific outcome measure estimates and \code{sei} containing the study-specific within-study standard error estimates. The default is \code{TRUE}.
 #' @param ... optional arguments that are passed into the \code{\link[metafor]{rma.uni}} function for pooling. See documentation of \code{\link[metafor]{rma.uni}}.
@@ -75,8 +74,8 @@
 #'
 #' @export
 
-metamean <- function(data, mean_method = 'mln', se_method = 'bootstrap',
-                     sd_method = NA, nboot = 1e3, pool_studies = TRUE, ...) {
+metamean <- function(data, mean_method = 'mln', se_method,
+                     sd_method, nboot = 1e3, pool_studies = TRUE, ...) {
 
   df <- check_and_clean_df(df = data, method = mean_method)
   n_studies <- nrow(df)
@@ -142,6 +141,9 @@ check_and_clean_df <- function(df, method){
   if (length(method) == 1 && method == 'cd'){
     all_possible_colnames <- c('q1.g1', 'med.g1', 'q3.g1', 'n.g1', 'mean.g1', 'sd.g1', 'med.var.g1',
                                'med.ci.lb.g1', 'med.ci.ub.g1', 'alpha.1.g1', 'alpha.2.g1')
+    if (any(c('min.g2', 'q1.g2', 'med.g2', 'q3.g2', 'max.g2', 'n.g2', 'mean.g2', 'sd.g2') %in% colnames(df))){
+      warning('A data set with two groups was provided, but the CD method is only applicable for one-group studies. The CD method is only meta-analyzing the group 1 data.')
+    }
   } else {
     all_possible_colnames <- c('min.g1', 'q1.g1', 'med.g1', 'q3.g1', 'max.g1', 'n.g1', 'mean.g1', 'sd.g1',
                                'min.g2', 'q1.g2', 'med.g2', 'q3.g2', 'max.g2', 'n.g2', 'mean.g2', 'sd.g2')
@@ -181,34 +183,65 @@ check_mean_se_methods <- function(mean_method, se_method, sd_method, n){
     mean_method <- rep(mean_method, times = n)
   } else {
     if (length(mean_method) != n){
-      stop("The length of 'mean_method' must equal to the number of rows in 'data'.")
+      stop("The length of 'mean_method' must equal 1 or the number of rows in 'data'.")
     }
   }
-  if (length(se_method) == 1){
+  if (missing(se_method)){
+    se_method <- rep(NA, times = n)
+    for (i in 1:n){
+      if (mean_method[i] %in% c('qe', 'bc', 'mln')){
+        se_method[i] <- 'bootstrap'
+      } else if (mean_method[i] == 'yang'){
+        se_method[i] <- 'plugin'
+      } else {
+        se_method[i] <- 'naive'
+      }
+    }
+  } else if (length(se_method) == 1){
     se_method <- rep(se_method, times = n)
-    if (length(se_method) != n){
-      stop("The length of 'se_method' must equal to the number of rows in 'data'.")
-    }
+  } else if (length(se_method) != n){
+    stop("The length of 'se_method' must equal 1 or the number of rows in 'data'.")
   }
-  if (length(sd_method) == 1){
-    sd_method <- rep(sd_method, times = n)
-    if (length(sd_method) != n){
-      stop("The length of 'sd_method' must equal to the number of rows in 'data'.")
+
+  if (missing(sd_method)){
+    sd_method <- rep(NA, times = n)
+    for (i in 1:n){
+      if (se_method[i] == 'naive'){
+        if (mean_method[i] %in% c('shi_lognormal', 'qe', 'bc', 'mln', 'yang')){
+          sd_method[i] <- mean_method[i]
+        } else if (mean_method[i] == 'luo'){
+          sd_method[i] <- 'wan/shi_normal'
+        } else if (mean_method[i] == 'hozo/wan/bland'){
+          sd_method[i] <- 'wan'
+        }
+      }
     }
+  } else if (length(sd_method) == 1){
+    sd_method <- rep(sd_method, times = n)
+  } else if (length(sd_method) != n){
+    stop("The length of 'sd_method' must equal 1 or the number of rows in 'data'.")
   }
 
   # Checking that mean_method, se_method, and sd_method are set to valid options
-  all_mean_methods <- c('qe', 'bc', 'mln', 'wan', 'luo', 'yang', 'shi_normal', 'shi_lognormal')
+  all_mean_methods <- c('qe', 'bc', 'mln', 'hozo/wan/bland', 'luo', 'yang', 'shi_lognormal')
   if (!all(mean_method %in% all_mean_methods)){
-    stop("mean_method must be set to 'qe', 'bc', 'mln', 'wan', 'luo', 'yang', 'shi_normal', or 'shi_lognormal'")
+    if (any(mean_method == 'wan')){
+      stop("The 'wan' option for mean_method has been renamed to 'hozo/wan/bland'. Please use the 'hozo/wan/bland' option instead.")
+    } else if (any(mean_method == 'shi_normal')){
+      stop("The 'shi_normal' option for mean_method has been removed because it was redundant with the 'luo' option. Please use the 'luo' option instead.")
+    }
+    stop("mean_method must be set to 'qe', 'bc', 'mln', 'hozo/wan/bland', 'luo', 'yang', or 'shi_lognormal'")
   }
   all_se_methods <- c('bootstrap', 'plugin', 'naive')
   if (!all(se_method %in% all_se_methods)){
     stop("se_method must be set to 'bootstrap', 'plugin', or 'naive'")
   }
-  all_sd_methods <- c('qe', 'bc', 'mln', 'wan', 'yang', 'shi_normal', 'shi_lognormal')
+  all_sd_methods <- c('qe', 'bc', 'mln', 'wan', 'yang', 'wan/shi_normal', 'shi_lognormal')
   if (!all(is.na(sd_method) | sd_method %in% all_sd_methods)){
-    stop("sd_method must be set to 'qe', 'bc', 'mln', 'wan', 'yang', 'shi_normal', or 'shi_lognormal'")
+    if (any(!is.na(sd_method) & sd_method == 'shi_normal')){
+      stop("The 'shi_normal' option for sd_method has been renamed to 'wan/shi_normal'. Please use the 'wan/shi_normal' option instead.")
+    }
+    stop("sd_method must be set to 'qe', 'bc', 'mln', 'wan', 'yang', 'wan/shi_normal', or 'shi_lognormal'")
   }
 
   # Checking consistency between mean_method, sd_method, and se_method
@@ -239,8 +272,8 @@ get_mean_se <- function(df, mean_method, se_method, sd_method, scenario, group, 
   max.val <- df[, paste0('max.g', group)]
   n <- df[, paste0('n.g', group)]
 
-  if (mean_method %in% c('luo', 'yang', 'shi_normal', 'shi_lognormal') |
-      (!is.na(sd_method) & sd_method %in% c('wan', 'yang', 'shi_normal', 'shi_lognormal'))){
+  if (mean_method %in% c('luo', 'yang', 'shi_lognormal') |
+      (!is.na(sd_method) & sd_method %in% c('wan', 'yang', 'wan/shi_normal', 'shi_lognormal'))){
     if (scenario == 'S1'){
       quants <- c(min.val, med.val, max.val)
     } else if (scenario == 'S2'){
@@ -289,9 +322,9 @@ get_mean_se <- function(df, mean_method, se_method, sd_method, scenario, group, 
     }
   }
 
-  if (mean_method %in% c('luo', 'shi_normal')){
+  if (mean_method == 'luo'){
     est.mean <- metaBLUE::Luo.mean(X = quants, n = n, type = scenario)$muhat
-  } else if (mean_method == 'wan'){
+  } else if (mean_method == 'hozo/wan/bland'){
     if (scenario == 'S1'){
       est.mean <- (min.val + 2 * med.val + max.val) / 4
     } else if (scenario == 'S2'){
@@ -343,11 +376,11 @@ get_mean_se <- function(df, mean_method, se_method, sd_method, scenario, group, 
     } else if (sd_method == 'yang'){
       est.se <- fit_yang$sigmahat / sqrt(n)
     }
-    else if (sd_method == 'shi_normal' & scenario == 'S3'){
+    else if (sd_method == 'wan/shi_normal' & scenario == 'S3'){
       theta1 <- (2 + 0.14 * n^0.6) * stats::qnorm((n - 0.375) / (n + 0.25))
       theta2 <- (2 + 2 / (0.07 * n^0.6)) * stats::qnorm((0.75 * n - 0.125) / (n + 0.25))
       est.se <- ((max.val - min.val) / theta1 + (q3.val - q1.val) / theta2) / sqrt(n)
-    } else if (sd_method %in% c('wan', 'shi_normal')){
+    } else if (sd_method %in% c('wan', 'wan/shi_normal')){
       est.se <- metaBLUE::Wan.std(X = quants, n = n, type = scenario)$sigmahat / sqrt(n)
     } else if (sd_method == 'shi_lognormal'){
       muhat <- metaBLUE::Luo.mean(X = log(quants), n = n, type = scenario)$muhat

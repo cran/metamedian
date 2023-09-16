@@ -1,5 +1,21 @@
 ## Package Updates
 
+### Changes in Version 1.1.0 (2023-09-16)
+
+-   Added the skewness test of Shi et al. (2023) to the
+    `describe_studies()` function
+-   Added the `dat.phq9_raw` and `dat.phq9` data sets
+-   Changed the default values for the `se_method` and `sd_method`
+    arguments in the `metamean()` function. They are now set based on
+    the value set for the `mean_method` argument.
+-   Renamed the `'wan'` option for the `mean_method` argument to
+    `'hozo/wan/bland'`. Similarly, renamed the `'shi_normal'` option for
+    the `'sd_method'` argument to `'wan/shi_normal'`. the `metamean()`
+    function.
+-   Expanded the error checking
+-   Removed Travis CI
+-   Updates to the documentation
+
 ### Changes in Version 1.0.0 (2023-02-27)
 
 -   Added the `metamean()` function, which can apply several methods to

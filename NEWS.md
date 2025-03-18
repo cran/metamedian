@@ -1,5 +1,16 @@
 ## Package Updates
 
+### Changes in Version 1.2.1 (2025-03-18)
+
+-   Minor update to the documentation
+
+### Changes in Version 1.2.0 (2025-03-07)
+
+-   Added the `metamedian_survival` function for meta-analyzing median
+    survival times
+-   Added the `dat.lung` data set
+-   Updated references and documentation
+
 ### Changes in Version 1.1.1 (2023-12-13)
 
 -   Renamed the argument `method_cd` to `cd_method` in the

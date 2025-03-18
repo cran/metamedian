@@ -2,7 +2,7 @@
 % Please edit documentation in R/describe_studies.R
 \name{describe_studies}
 \alias{describe_studies}
-\title{Descriptive statistics for meta-analyzing studies reporting medians}
+\title{Descriptive statistics for meta-analyzing studies reporting sample medians}
 \usage{
 describe_studies(data, method = "qe", group_labels = c("Group 1", "Group 2"))
 }
@@ -38,7 +38,7 @@ an object of class \code{"describe_studies"}. The object is a list with the foll
 The results are printed with the \code{\link{print.describe_studies}} function.
 }
 \description{
-This function performs some descriptive analyses. Specifically, this function describes: (i) the number of studies reporting various summary statistics, (ii) the Bowley skewness (Bowley, 1901) in the primary studies, and (iii) the results of a skewness test (Shi et al., 2023) applied to the summary statistics reported in the primary studies.
+This function performs some descriptive analyses for meta-analyzing studies reporting sample medians. Specifically, this function describes: (i) the number of studies reporting various summary statistics, (ii) the Bowley skewness (Bowley, 1901) in the primary studies, and (iii) the results of a skewness test (Shi et al., 2023) applied to the summary statistics reported in the primary studies.
 }
 \examples{
 describe_studies(data = dat.age, group_labels = c("Nonsurvivors", "Survivors"))
@@ -47,7 +47,7 @@ describe_studies(data = dat.age, group_labels = c("Nonsurvivors", "Survivors"))
 \references{
 Bowley, A.L. (1901). Elements of Statistics. London: P.S. King & Son.
 
-McGrath S., Zhao X., Ozturk O., Katzenschlager S., Steele R., and Benedetti A. (in press). metamedian: An R package for meta-analyzing studies reporting medians. \emph{Research Synthesis Methods}.
+McGrath S., Zhao X., Ozturk O., Katzenschlager S., Steele R., and Benedetti A. (2024). metamedian: An R package for meta-analyzing studies reporting medians. \emph{Research Synthesis Methods}. \strong{15}(2):332-346.
 
-Shi J., Luo D., Wan X., Yue L., Liu J., Bian Z., Tong T. (2023). Detecting the skewness of data from the five-number summary and its application in meta-analysis. \emph{Statistical Methods in Medical Research}. \strong{0}(0).
+Shi J., Luo D., Wan X., Yue L., Liu J., Bian Z., Tong T. (2023). Detecting the skewness of data from the five-number summary and its application in meta-analysis. \emph{Statistical Methods in Medical Research}. \strong{32}(7):1338-1360.
 }

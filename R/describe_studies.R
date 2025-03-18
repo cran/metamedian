@@ -1,6 +1,6 @@
-#' Descriptive statistics for meta-analyzing studies reporting medians
+#' Descriptive statistics for meta-analyzing studies reporting sample medians
 #'
-#' This function performs some descriptive analyses. Specifically, this function describes: (i) the number of studies reporting various summary statistics, (ii) the Bowley skewness (Bowley, 1901) in the primary studies, and (iii) the results of a skewness test (Shi et al., 2023) applied to the summary statistics reported in the primary studies.
+#' This function performs some descriptive analyses for meta-analyzing studies reporting sample medians. Specifically, this function describes: (i) the number of studies reporting various summary statistics, (ii) the Bowley skewness (Bowley, 1901) in the primary studies, and (iii) the results of a skewness test (Shi et al., 2023) applied to the summary statistics reported in the primary studies.
 #'
 #' @param data data frame containing the study-specific summary data. For one-group studies, this data frame can contain the following columns:
 #' \tabular{ll}{
@@ -29,8 +29,8 @@
 #' The results are printed with the \code{\link{print.describe_studies}} function.
 #'
 #' @references Bowley, A.L. (1901). Elements of Statistics. London: P.S. King & Son.
-#' @references McGrath S., Zhao X., Ozturk O., Katzenschlager S., Steele R., and Benedetti A. (in press). metamedian: An R package for meta-analyzing studies reporting medians. \emph{Research Synthesis Methods}.
-#' @references Shi J., Luo D., Wan X., Yue L., Liu J., Bian Z., Tong T. (2023). Detecting the skewness of data from the five-number summary and its application in meta-analysis. \emph{Statistical Methods in Medical Research}. \strong{0}(0).
+#' @references McGrath S., Zhao X., Ozturk O., Katzenschlager S., Steele R., and Benedetti A. (2024). metamedian: An R package for meta-analyzing studies reporting medians. \emph{Research Synthesis Methods}. \strong{15}(2):332-346.
+#' @references Shi J., Luo D., Wan X., Yue L., Liu J., Bian Z., Tong T. (2023). Detecting the skewness of data from the five-number summary and its application in meta-analysis. \emph{Statistical Methods in Medical Research}. \strong{32}(7):1338-1360.
 #'
 #' @examples
 #' describe_studies(data = dat.age, group_labels = c("Nonsurvivors", "Survivors"))

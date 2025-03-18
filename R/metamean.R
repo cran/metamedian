@@ -53,7 +53,7 @@
 #' @references Luo D., Wan X., Liu J., and Tong T. (2016). Optimally estimating the sample mean from the sample size, median, mid-range, and/or mid-quartile range. \emph{Statistical Methods in Medical Research}. \strong{27}(6):1785-805.
 #' @references McGrath S., Zhao X., Steele R., Thombs B.D., Benedetti A., and the DEPRESsion Screening Data (DEPRESSD) Collaboration. (2020). Estimating the sample mean and standard deviation from commonly reported quantiles in meta-analysis. \emph{Statistical Methods in Medical Research}. \strong{29}(9):2520-2537.
 #' @references McGrath S., Katzenschlager S., Zimmer A.J., Seitel A., Steele R., and Benedetti A. (2023). Standard error estimation in meta-analysis of studies reporting medians. \emph{Statistical Methods in Medical Research}. \strong{32}(2):373-388.
-#' @references McGrath S., Zhao X., Ozturk O., Katzenschlager S., Steele R., and Benedetti A. (in press). metamedian: An R package for meta-analyzing studies reporting medians. \emph{Research Synthesis Methods}.
+#' @references McGrath S., Zhao X., Ozturk O., Katzenschlager S., Steele R., and Benedetti A. (2024). metamedian: An R package for meta-analyzing studies reporting medians. \emph{Research Synthesis Methods}. \strong{15}(2):332-346.
 #' @references Shi J., Luo D., Weng H., Zeng X.T., Lin L., Chu H., and Tong T. (2020a). Optimally estimating the sample standard deviation from the five-number summary. \emph{Research synthesis methods}. \strong{11}(5):641-654.
 #' @references Shi J., Tong T., Wang Y., and Genton M.G. (2020b). Estimating the mean and variance from the five-number summary of a log-normal distribution. \emph{Statistics and Its Interface}. \strong{13}(4):519-531.
 #' @references Wan X., Wang W., Liu J., and Tong T. (2014). Estimating the sample mean and standard deviation from the sample size, median, range and/or interquartile range. \emph{BMC Medical Research Methodology}. \strong{14}(1):1-13.
@@ -149,6 +149,9 @@ check_and_clean_df <- function(df, method){
     if (any(c('min.g2', 'q1.g2', 'med.g2', 'q3.g2', 'max.g2', 'n.g2', 'mean.g2', 'sd.g2') %in% colnames(df))){
       warning('A data set with two groups was provided, but the CD method is only applicable for one-group studies. The CD method is only meta-analyzing the group 1 data.')
     }
+  } else if (length(method) == 1 && method == 'wald') {
+    all_possible_colnames <- c('med.g1', 'med.ci.lb.g1', 'med.ci.ub.g1', 'med.ci.level.g1',
+                               'med.g2', 'med.ci.lb.g2', 'med.ci.ub.g2', 'med.ci.level.g2')
   } else {
     all_possible_colnames <- c('min.g1', 'q1.g1', 'med.g1', 'q3.g1', 'max.g1', 'n.g1', 'mean.g1', 'sd.g1',
                                'min.g2', 'q1.g2', 'med.g2', 'q3.g2', 'max.g2', 'n.g2', 'mean.g2', 'sd.g2')
